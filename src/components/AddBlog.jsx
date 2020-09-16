@@ -30,7 +30,7 @@ function AddBlog() {
 
     const handleSubmit=async()=>{
         console.log(post);
-        const data=await fetch(`/post/blog`,{method:"post",headers:{"Content-type":"application/json"},body:JSON.stringify(post)})
+        const data=await fetch(`https://thawing-refuge-09946.herokuapp.com/post/blog`,{method:"post",headers:{"Content-type":"application/json"},body:JSON.stringify(post)})
         const res=await data.json();
         console.log(res);
     }

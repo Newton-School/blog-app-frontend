@@ -14,7 +14,7 @@ function Home() {
         window.scrollTo(0,0)
         const getPosts=async()=>{
         setLoader(true)
-        const data=await fetch(`/allblog?page=${page}`)
+        const data=await fetch(`https://thawing-refuge-09946.herokuapp.com/allblog?page=${page}`)
         const pure=await data.json()
         console.log(pure);
         setData(pure)

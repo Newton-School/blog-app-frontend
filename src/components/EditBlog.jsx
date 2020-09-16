@@ -6,19 +6,37 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 
-function EditBlog(props) {
-    const{_id,posted_at,posted_by,description,topic}=props?.location?.blog;
-    const[NewDescription,setDescription]=useState(description)
+function EditBlog({match}) {
+    const[blog,setBlog]=useState({
+        _id:"",
+        posted_at:"",
+        posted_by:"",
+        description:"",
+        topic:""
+    });
+
+    const[loader,setLoader]=useState(false);
 
 
 
     const handleChange=(e)=>{
-        console.log(e.target.value);
-        setDescription(e.target.value)
+        const{name,value}=e.target;
+        setBlog(prev=>{
+            return{...prev,[name]:value}
+        })
+
     }
-    const [blog, setBlog] = useState()
     useEffect(() => {
-        setBlog(props?.location?.blog);
+        const fetchdata=async()=>{
+        setLoader(true)
+        const del=await fetch(`https://thawing-refuge-09946.herokuapp.com/allblog/${match.params.id}`)
+        const res=await del.json();
+        setBlog(res.result);
+        console.log(res);
+        console.log(blog);
+        setLoader(false)
+        }
+        fetchdata()
         return () => {
             // 
         }
@@ -27,31 +45,32 @@ function EditBlog(props) {
     const handleSubmit=async()=>{
 
 
-        const send=await fetch(`/update/blog/${_id}`,
+        const send=await fetch(`https://thawing-refuge-09946.herokuapp.com/update/blog/${blog?._id}`,
                             {method:"put",headers:{"Access-Control-Allow-Origin": "*",
                                                     "Content-Type": "application/json",
                                                     Accept: "application/json",},
-                            body:JSON.stringify({description:NewDescription})})
+                            body:JSON.stringify({blog})})
         const resp=await send.json();
         setBlog(resp.result)
         console.log(resp);
     }
     return (
+        loader?<h1>Loading..</h1>:
         <form className="edit_blog" onSubmit={handleSubmit} > 
-        <Link to={{pathname:`/blog/${_id}`,blog:blog}}>  
+        <Link to={{pathname:`/blog/${blog._id}`,blog:blog}}>  
         <div className="back">
             <ArrowBackIcon />
         </div>
         </Link>  
             <div className="user">
                 
-            <Avatar className="avatar">{posted_by.charAt(0)}</Avatar>
+            <Avatar className="avatar">{blog?.posted_by?.charAt(0)}</Avatar>
                 <section>
-                <h1 className="name">{posted_by}</h1>
-                <p className="date">posted at: {posted_at}</p>
+                <h1 className="name">{blog?.posted_by}</h1>
+                <p className="date">posted at: {blog?.posted_at}</p>
                 </section>
             </div>
-           <textarea name="edit_description" value={NewDescription} onChange={handleChange}></textarea>
+           <textarea name="edit_description" value={blog.description} name="description" onChange={handleChange}></textarea>
 
            <div className="save" type="submit" onClick={handleSubmit}>
                 <CheckIcon />
