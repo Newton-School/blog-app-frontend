@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-
+import './styles.css';
 function AddBlog(props) {
    
     const [blog,setblog] = useState({
@@ -47,7 +47,7 @@ const edititem =(id) =>{
                 <h2>Title</h2>
                 <input type="text" value={blog.Title} onChange={e => {setblog({...blog,Title:e.target.value}) }}/>
                 <label>Content</label>
-                <input type="text" value={blog.Content} onChange={e => {setblog({...blog,Content:e.target.value})} }/>
+                <textarea type="text" value={blog.Content} onChange={e => {setblog({...blog,Content:e.target.value})} }/>
            <button onClick={handleChange} >Save</button>
             </form>
             <ul>
@@ -55,8 +55,11 @@ const edititem =(id) =>{
                     <li key={item.id}>
                         <h2>{item.Titles}</h2>
                          <p>{item.items}</p>
-                         <button onClick={()=>edititem(item.id)}>Edit</button>
-                         <button onClick={()=>deleteItem(item.id)}>delete</button>
+                         <span>
+                         <button className="edit" onClick={()=>edititem(item.id)}>Edit</button>
+                         <button className="delete" onClick={()=>deleteItem(item.id)}>delete</button>
+                         </span>
+                         
                     </li>
                 )}
             </ul>
