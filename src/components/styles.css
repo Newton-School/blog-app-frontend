@@ -1,16 +1,22 @@
 .header{
     color: snow;
     width: 100%;
-    height: 55px;
+    height: 75px;
     background: palevioletred;
-    font-size: xx-large;
+    font-size: 43px;
     font-family: cursive;
-    padding: 15px;
+    padding-left: 30px;
+    padding-top: 5px;
+    font-weight: 600;
+    letter-spacing: 10px;
+    position: fixed;
+    z-index: 2;
+    top: 0px;
 }
 .addblog{
     width: 130px;
     height: 40px;
-    margin: 20px 21px 0 12px;
+    margin: 105px 21px 0 40px;
     position: relative;
     left: 80%;
     border: 4px solid palevioletred;
@@ -21,26 +27,106 @@
     font-style: normal;
 }
 li{
-    box-shadow:inset 0 -3em 3em rgba(0, 0,0,0),
-    0 0 0 2px rgba(255, 255,255, 255),
-    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 -3em 3em rgba(0, 0,0,0), 0 0 0 1px rgb(255 255 255), 0.2em 0.2em 1em rgba(0, 0, 0, 0.1);
     list-style: none;
     display: grid;
     justify-content: left;
-   border-radius: 25px;
-    margin: 50px;
-    height: 200px;
+    border-radius: 10px;
+    margin: 30px 10px 50px 85px;
+    height: 170px;
+    width: 80%;
+    padding: 25px;
+   border-top: 5px solid dodgerblue;
 }
 .edit{
-    color: red;
-    position: absolute;
-    left: 70%;
-    width: 70px;
-    height: 30px
+    color: snow;
+    width: 75px;
+    height: 30px;
+    margin-right: 25px;
+    background: dodgerblue;
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
 }
 .delete{
-    color: red;
+    color: snow;
+    width: 75px;
+    height: 30px;
+    margin-right: 25px;
+    background: indianred;
+    border: 1px solid indianred;
+    border-radius: 5px;
 }
 p{
+    color: darkslategrey;
+    margin-bottom: 60px;
+    margin-top: 0px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+h2{
+    color: darkcyan;
+    letter-spacing: 5px;
+    border-bottom: 1px solid darkcyan;
+    text-align: left;
+    padding-left: 20px;
+}
+.form{
+    box-shadow: inset 0 -3em 3em rgba(0, 0,0,0), 0 0 0 1px rgb(255 255 255), 0.2em 0.2em 1em rgba(0, 0, 0, 0.1);
+    font-size: 23px;
+    display: grid;
+    margin: 120px 120px 50px;
+    padding: 29px;
+    justify-content: normal;
+    height: 200px;
+}
+input{
+    margin-bottom: 20px;
+    color: seagreen;
+    font-size: 20px;
+    letter-spacing: 2px;
+    border: 2px solid lightblue;
+    border-radius: 7px;
+}
+textarea{
+    max-height: fit-content;
+    border: 2px solid lightblue;
+    border-radius: 7px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+span{
     color: red;
+}
+
+.save{
+    color: snow;
+    width: 90px;
+    height: 30px;
+    margin: 8px 15px 7px 5px;
+    border: 2px solid cornflowerblue;
+    border-radius: 5px;
+    background: cornflowerblue;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: cursive;
+    position: relative;
+    top: 15px;
+}
+.cancel{
+    color: snow;
+    width: 90px;
+    height: 30px;
+    margin: 8px 15px 7px 5px;
+    border: 2px solid indianred;
+    border-radius: 5px;
+    background: indianred;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: cursive;
+    position: relative;
+    top: 15px;
 }
